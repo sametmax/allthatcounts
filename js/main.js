@@ -69,6 +69,10 @@ counterApp.directive('wheelable', function() {
   return directive;
 });
 
+/**
+* Clicking on an input tag with this directive,
+* will select the text inside.
+*/
 counterApp.directive('selectOnClick', function () {
     return {
         restrict: 'A',
@@ -100,6 +104,9 @@ counterApp.directive('ngReallyClick', [function() {
 }]);
 
 
+/**
+* Project entry point.
+*/
 counterApp.controller('TabsCtrl', function($scope, countersService, timersService, versusService, $document) {
 
   $scope.counters = countersService;
@@ -112,17 +119,20 @@ counterApp.controller('TabsCtrl', function($scope, countersService, timersServic
   $scope.chronos.add();
 
   $scope.tab = "countdown";
-
   $scope.selectTab = function(name){$scope.tab = name;};
 
+  /*
+    I don't know where to put this.
+
+    It catches the keybord events in the versus tab so you can switch and
+    toggle pause without using the mouse.
+  */
   $document.bind('keydown', function (evt) {
-    if (evt.which === 32)  { // space
-      if ($scope.tab === 'versus'){
+    if ($scope.tab === 'versus'){
+      if (evt.which === 32)  { // space
         $scope.versus.togglePause();
       }
-    }
-    if (evt.which === 17)  { // CTRL
-      if ($scope.tab === 'versus'){
+      if (evt.which === 17 || evt.which === 225 || evt.which === 223) { // CTRL
         $scope.versus.switch();
       }
     }
