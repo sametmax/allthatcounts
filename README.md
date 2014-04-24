@@ -15,3 +15,5 @@ Code is under BSD licence.
 To deploy : just copy / paste de code on your Web server root.
 
 To dev, I advice you to use the provided dev server since it will prevent some headaches with browser security policies and it ignores the HTML5 app cache by default.
+
+USAGE: python devserver.py [host] [port] [--with-cache]
