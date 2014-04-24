@@ -1,4 +1,5 @@
-<div class="btn-group">
+<p>
+  <div class="btn-group">
     <button type="button" class="btn btn-info active"
             ng-model="versus.mode"
             btn-radio="'auto'">Auto</button>
@@ -8,11 +9,21 @@
     <button type="button" class="btn btn-info"
             ng-model="versus.mode"
             btn-radio="'stack'">Stack</button>
-</div>
 
- <button ng-click="versus.reset()"
-         type="button" class="btn btn-danger ">Reset</button>
+  </div>
 
+  <button ng-click="versus.reset()"
+       type="button" class="btn btn-danger ">Reset</button>
+
+  <button type="button"
+          ng-class="config.mute ? 'btn-success' : 'btn-info'"
+          class="btn pull-right" ng-model="config.mute"
+          btn-checkbox btn-checkbox-true="1"
+          btn-checkbox-false="0">
+    <span class="glyphicon glyphicon-volume-up" ng-show="!config.mute"></span>
+    <span class="glyphicon glyphicon-volume-off" ng-show="config.mute"></span>
+  </button>
+</p>
 
 <table class="versus" ng-class="{'current-player': versus.runningTimer == 0}">
   <caption>

@@ -103,16 +103,16 @@ counterApp.directive('ngReallyClick', [function() {
   };
 }]);
 
-
 /**
 * Project entry point.
 */
-counterApp.controller('TabsCtrl', function($scope, countersService, timersService, versusService, $document) {
+counterApp.controller('TabsCtrl', function($scope, countersService, timersService, versusService, $document, configurationService) {
 
   $scope.counters = countersService;
   $scope.timers = timersService.makeTimers("Count down");
   $scope.chronos = timersService.makeTimers("Chrono");
   $scope.versus = versusService;
+  $scope.config = configurationService;
 
   $scope.counters.add();
   $scope.timers.add();

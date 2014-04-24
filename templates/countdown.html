@@ -1,3 +1,14 @@
+<p>
+  <button type="button"
+          ng-class="config.mute ? 'btn-success' : 'btn-info'"
+          class="btn pull-right" ng-model="config.mute"
+          btn-checkbox btn-checkbox-true="1"
+          btn-checkbox-false="0">
+    <span class="glyphicon glyphicon-volume-up" ng-show="!config.mute"></span>
+    <span class="glyphicon glyphicon-volume-off" ng-show="config.mute"></span>
+  </button>
+</p>
+
 <table class="countdown" ng-repeat="timer in timers.list">
   <caption>
       <input class="counter-name" type="text" select-on-click

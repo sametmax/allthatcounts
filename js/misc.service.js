@@ -1,11 +1,13 @@
 
-counterApp.factory('audioService', function(){
+counterApp.factory('audioService', function(configurationService){
   var service = {
     "player": document.getElementsByTagName("audio")[0],
     "alert": function(){
-      service.player.pause();
-      service.player.currentTime = 0;
-      service.player.play();
+      if (!configurationService.mute) {
+        service.player.pause();
+        service.player.currentTime = 0;
+        service.player.play();
+      }
     }
   };
 
@@ -50,4 +52,11 @@ counterApp.factory('storageService', function(){
       }
     };
 
+});
+
+
+counterApp.factory("configurationService", function(){
+  return {
+    "mute": false,
+  }
 });
