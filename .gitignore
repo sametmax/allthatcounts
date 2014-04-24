@@ -3,4 +3,7 @@
 *.tmp
 *.bak
 *.old
-*.pyc
+__pycache__/
+*.py[cod]
+*.sublime-workspace
+*.sublime-project

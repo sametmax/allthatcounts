@@ -46,12 +46,16 @@ counterApp.factory('versusService', function(timersService, $interval, audioServ
       versus.runningTimer = null;
     },
     "switch": function(){
+
       if (!versus.isStarted){
         versus.startA();
-      }
-      if (!versus.isPaused){
+      } else {
+        if (versus.isPaused){
+          versus.resume();
+        }
+
         versus.currentTimer().stop();
-        versus.isStarted = true;
+        audioService.alert();
         if (versus.mode != "stack"){
           versus.currentTimer().reset();
         }

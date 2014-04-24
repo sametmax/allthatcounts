@@ -2,7 +2,11 @@
 counterApp.factory('audioService', function(){
   var service = {
     "player": document.getElementsByTagName("audio")[0],
-    "alert": function(){service.player.play();}
+    "alert": function(){
+      service.player.pause();
+      service.player.currentTime = 0;
+      service.player.play();
+    }
   };
 
   return service;
