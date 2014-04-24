@@ -1,0 +1,141 @@
+<table class="countdown" ng-repeat="timer in timers.list">
+  <caption>
+      <input class="counter-name" type="text"
+             ng-model="timer.name" />
+  </caption>
+  <tbody>
+  <tr class="text-center" ng-show="!timer.isRunning">
+    <td></td>
+    <td>
+      <a ng-click="timer.hours = timer.hours + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="timer.minutes = timer.minutes + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="timer.seconds = timer.seconds + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="counter-delete-button">
+      <button type="button"
+              ng-really-message="Really DELETE this count down?"
+              ng-really-click="timers.remove($index)"
+              class="btn btn-danger">X</button>
+
+    </td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="timer.hours"
+             class="form-control text-center"
+             wheelable
+             onwheelup="timer.hours = timer.hours + 1"
+             onwheeldown="timer.hours = timer.hours - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="timer.minutes"
+             class="form-control text-center"
+             wheelable
+             onwheelup="timer.minutes = timer.minutes + 1"
+             onwheeldown="timer.minutes = timer.minutes - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="timer.seconds"
+             class="form-control text-center"
+             wheelable
+             onwheelup="timer.seconds = timer.seconds + 1"
+             onwheeldown="timer.seconds = timer.seconds - 1"
+             maxlength="2">
+    </td>
+    <td class="counter-action-button">
+
+      <div class="btn-group">
+      <button type="button" ng-if="!timer.isRunning"
+              class="btn btn-default text-center"
+              ng-click="timer.countDown()">Start</button>
+
+      <button type="button" ng-if="timer.isRunning && !timer.overlapValue"
+              class="btn btn-default text-center"
+              ng-click="timer.stop()">Stop</button>
+
+      <button type="button" ng-if="timer.isRunning && timer.overlapValue"
+              class="btn btn-default text-center"
+              ng-click="timer.restart()">Restart</button>
+
+      <button type="button"
+              class="btn btn-default dropdown-toggle"
+              data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu">
+        <li ng-show="!timer.overlapValue">
+          <a ng-click="timer.restart()" href="#">Restart</a>
+        </li>
+        <li ng-show="timer.overlapValue">
+          <a ng-click="timer.stop()" href="#">Stop</a>
+        </li>
+        <li ng-show="!timer.isRunning">
+          <a ng-click="timer.reset()" href="#">Reset</a>
+        </li>
+        <li ng-show="!timer.isRunning">
+          <a ng-click="timer.toZero()" href="#">Set to 0</a>
+        </li>
+      </ul>
+      </div>
+
+    </td>
+  </tr>
+  <tr class="text-center" ng-show="!timer.isRunning">
+    <td></td>
+    <td>
+      <a ng-click="timer.hours = timer.hours - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="timer.minutes = timer.minutes - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="timer.seconds = timer.seconds - 1"
+         class="btn btn-link">
+          <span  class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+  </tr>
+  <tr ng-show="timer.overlapValue">
+    <td class="overlap-time" colspan="7">
+      -{{timer.over_hours()}}:{{timer.over_minutes()}}:{{timer.over_seconds()}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<footer>
+  <button ng-click="timers.add()" type="button" class="btn btn-primary btn-lg center-block">
+    Add timer
+  </button>
+</footer>

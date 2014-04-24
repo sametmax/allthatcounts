@@ -1,0 +1,84 @@
+.container {
+    padding-top:0.5em;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.current-player caption {
+  color:red;
+}
+
+.tab-content {
+  padding:1ex;
+}
+
+.tab-content table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:1em;
+}
+
+table input[type=number]{
+    width:40px;
+    padding:0;
+}
+
+.lap-list {
+font-size:0.9em;
+font-style:italic;
+color:#47A447;
+}
+.lap-list li {
+list-style-type:none;
+}
+
+.counter-value{
+    width:100px;
+}
+
+caption input {
+    text-align: center;
+    margin-bottom:0.5ex;
+}
+
+.overlap-time{
+    text-align:center;
+    font-style:italic;
+    font-size:0.8em;
+    color:red;
+    }
+
+.counter-name {
+   border:none;
+   background:none;
+   margin-left:1ex;
+}
+
+.counter-action-button, .counter-delete-button {
+  padding-left:1ex;
+  padding-right:1ex;
+}
+
+footer {
+    margin-top:1em;
+}
+
+
+/* Medium devices (big tablets, 992px; and up) */
+@media (max-width: 992px) {
+  .nav-tabs li a {
+    margin:0;
+    padding:1ex;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Zoom */
+  .tab-content tr {
+     transform: scale(1.3);
+  }
+}

@@ -1,0 +1,55 @@
+<table ng-repeat="counter in counters.list">
+  <caption>
+      <input class="counter-name" type="text"
+             ng-model="counter.name" />
+  </caption>
+  <tbody>
+  <tr class="text-center">
+    <td></td>
+    <td>
+      <a ng-click="counter.value = counter.value + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td class="counter-delete-button">
+      <button type="button"
+              ng-really-message="Really DELETE this counter?"
+              ng-really-click="counters.list.remove($index)"
+              class="btn btn-danger">X</button>
+
+    </td>
+    <td style="width:100px;" class="form-group">
+      <input ng-model="counter.value"
+             class="form-control text-center counter-value"
+             wheelable
+             onwheelup="counter.value = counter.value + 1"
+             onwheeldown="counter.value = counter.value - 1"
+             maxlength="8">
+    </td>
+    <td class="counter-action-button">
+      <button type="button"
+              class="btn btn-default text-center"
+              ng-click="counter.value = 0">Reset</button>
+    </td>
+  </tr>
+  <tr class="text-center">
+    <td></td>
+    <td>
+      <a ng-click="counter.value = counter.value - 1"
+         class="btn btn-link">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
+<footer>
+  <button ng-click="counters.add()" type="button" class="btn btn-primary btn-lg center-block">
+    Add counter
+  </button>
+</footer>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="counterApp" manifest="cache.manifest">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Countdown, chrono, timers, counters, games, sports" />
+    <meta name="description" content="Countdown, chrono, timers and counters for games or sports" />
+    <meta name="robots" content="index,follow" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        All that counts - Countdown, chrono, timers and counters for games or sports
+    </title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<div class="container">
+
+<div ng-controller="TabsCtrl">
+  <tabset>
+
+    <tab heading="Countdown" select="selectTab('countdown')">
+      <div ng-include="'templates/countdown.html'"></div>
+    </tab>
+
+    <tab heading="Chrono" select="selectTab('chrono')">
+      <div ng-include="'templates/chronos.html'"></div>
+    </tab>
+
+    <tab heading="Counter" class="counters" select="selectTab('counter')">
+      <div ng-include="'templates/counters.html'"></div>
+    </tab>
+
+    <tab heading="Versus" class="versus" select="selectTab('versus')">
+      <div ng-include="'templates/versus.html'"></div>
+    </tab>
+  </tabset>
+</div>
+
+<audio id="audio-notification">
+    <source src="sound/gong.mp3"></source>
+    <source src="sound/gong.ogg"></source>
+</audio>
+</div>
+</body>
+
+<script src="js/angular.js"></script>
+<script src="js/ui-bootstrap-tpls-0.10.0.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/timer.service.js"></script>
+<script src="js/misc.service.js"></script>
+<script src="js/versus.service.js"></script>
+
+</html>
+

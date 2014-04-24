@@ -1,0 +1,87 @@
+<p><button type="button"
+            ng-class="chronos.laps ? 'btn-success' : 'btn-info'"
+            class="btn" ng-model="chronos.laps" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Laps</button></p>
+
+<table class="chrono" ng-repeat="chrono in chronos.list">
+  <caption>
+      <input class="counter-name" type="text"
+             ng-model="chrono.name" />
+  </caption>
+  <tbody>
+  <tr>
+    <td class="counter-delete-button">
+      <button type="button"
+              ng-really-message="Really DELETE this chrono ?"
+              ng-really-click="chronos.remove($index)"
+              class="btn btn-danger">X</button>
+
+    </td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="chrono.hours"
+             class="form-control text-center"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="chrono.minutes"
+             class="form-control text-center"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="chrono.seconds"
+             class="form-control text-center"
+             maxlength="2">
+    </td>
+    <td class="counter-action-button">
+
+      <div class="btn-group">
+      <button type="button" ng-if="!chrono.isRunning"
+              class="btn btn-default text-center"
+              ng-click="chrono.countUp()">Start</button>
+      <button type="button" ng-if="chrono.isRunning && !chronos.laps"
+              class="btn btn-default text-center"
+              ng-click="chrono.stop()">Stop</button>
+      <button type="button" ng-if="chrono.isRunning && chronos.laps"
+              class="btn btn-default text-center"
+              ng-click="chrono.addLap()">Lap</button>
+      <button type="button"
+              class="btn btn-default dropdown-toggle"
+              data-toggle="dropdown"
+              ng-if="!chrono.isRunning || chronos.laps">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu"
+          ng-if="!chrono.isRunning || chronos.laps">
+        <li>
+          <a ng-click="chrono.stop()"
+             ng-if="chrono.isRunning"
+             href="#">Stop</a>
+          <a ng-click="chrono.toZero()"
+             ng-if="!chrono.isRunning"
+             href="#">Set to 0</a>
+        </li>
+      </ul>
+      </div>
+    </td>
+  </tr>
+  <tr >
+    <td class="lap-list" colspan="7">
+      <ul>
+        <li ng-repeat="lap in chrono.laps" class="lap">
+          Lap {{$index + 1}} -
+          {{lap.hours}}:{{lap.minutes}}:{{lap.seconds}}
+        </li>
+      </ul>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<footer>
+  <button ng-click="chronos.add()" type="button" class="btn btn-primary btn-lg center-block">
+    Add chrono
+  </button>
+</footer>

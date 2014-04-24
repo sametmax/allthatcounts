@@ -1,0 +1,261 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-info active"
+            ng-model="versus.mode"
+            btn-radio="'auto'">Auto</button>
+    <button type="button" class="btn btn-info"
+            ng-model="versus.mode"
+            btn-radio="'manual'">Manual</button>
+    <button type="button" class="btn btn-info"
+            ng-model="versus.mode"
+            btn-radio="'stack'">Stack</button>
+</div>
+
+ <button ng-click="versus.reset()"
+         type="button" class="btn btn-danger ">Reset</button>
+
+
+<table class="versus" ng-class="{'current-player': versus.runningTimer == 0}">
+  <caption>
+      <input class="counter-name" type="text"
+             ng-model="versus.timerA.name" />
+  </caption>
+  <tbody>
+  <tr class="text-center"  ng-if="!versus.isStarted">
+    <td ></td>
+    <td >
+      <a ng-click="versus.timerA.hours = versus.timerA.hours + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerA.minutes = versus.timerA.minutes + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerA.seconds = versus.timerA.seconds + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+  </tr>
+  <tr>
+ <td class="counter-action-button" ng-if="!versus.isStarted || versus.timerA.isRunning">
+
+      <div class="btn-group" >
+      <button type="button" ng-if="!versus.timerA.isRunning"
+              class="btn btn-default text-center"
+              ng-click="versus.startA()">Start</button>
+
+      <button type="button" ng-if="versus.timerA.isRunning"
+              class="btn btn-default text-center"
+              ng-click="versus.switch()">Switch</button>
+
+
+      <button type="button"
+              class="btn btn-default dropdown-toggle"
+              data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu">
+        <li ng-show="!versus.timerA.isRunning">
+          <a ng-click="versus.timerA.toZero()" href="#">Set to 0</a>
+        </li>
+      </ul>
+      </div>
+
+    </td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerA.hours"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerA.hours = versus.timerA.hours + 1"
+             onwheeldown="versus.timerA.hours = versus.timerA.hours - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerA.minutes"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerA.minutes = versus.timerA.minutes + 1"
+             onwheeldown="versus.timerA.minutes = versus.timerA.minutes - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerA.seconds"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerA.seconds = versus.timerA.seconds + 1"
+             onwheeldown="versus.timerA.seconds = versus.timerA.seconds - 1"
+             maxlength="2">
+    </td>
+
+  </tr>
+  <tr class="text-center"  ng-if="!versus.isStarted">
+    <td></td>
+    <td>
+      <a ng-click="versus.timerA.hours = versus.timerA.hours - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerA.minutes = versus.timerA.minutes - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerA.seconds = versus.timerA.seconds - 1"
+         class="btn btn-link">
+          <span  class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+  </tr>
+  <tr ng-show="versus.timerA.overlapValue">
+    <td class="overlap-time" colspan="7">
+      -{{versus.timerA.over_hours()}}:{{versus.timerA.over_minutes()}}:{{versus.timerA.over_seconds()}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+<table class="versus" ng-class="{'current-player': versus.runningTimer == 1}">
+  <caption>
+      <input class="counter-name" type="text"
+             ng-model="versus.timerB.name" />
+  </caption>
+  <tbody>
+  <tr class="text-center"  ng-if="!versus.isStarted">
+    <td>
+      <a ng-click="versus.timerB.hours = versus.timerB.hours + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerB.minutes = versus.timerB.minutes + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerB.seconds = versus.timerB.seconds + 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerB.hours"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerB.hours = versus.timerB.hours + 1"
+             onwheeldown="versus.timerB.hours = versus.timerB.hours - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerB.minutes"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerB.minutes = versus.timerB.minutes + 1"
+             onwheeldown="versus.timerB.minutes = versus.timerB.minutes - 1"
+             maxlength="2">
+    </td>
+    <td>:</td>
+    <td style="width:40px;" class="form-group">
+      <input type="number" ng-model="versus.timerB.seconds"
+             class="form-control text-center"
+             wheelable
+             onwheelup="versus.timerB.seconds = versus.timerB.seconds + 1"
+             onwheeldown="versus.timerB.seconds = versus.timerB.seconds - 1"
+             maxlength="2">
+    </td>
+    <td class="counter-action-button" ng-if="!versus.isStarted || versus.timerB.isRunning">
+
+      <div class="btn-group" >
+      <button type="button" ng-if="!versus.timerB.isRunning"
+              class="btn btn-default text-center"
+              ng-click="versus.startB()">Start</button>
+
+      <button type="button" ng-if="versus.timerB.isRunning"
+              class="btn btn-default text-center"
+              ng-click="versus.switch()">Switch</button>
+
+      <button type="button"
+              class="btn btn-default dropdown-toggle"
+              data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu">
+        <li ng-show="!versus.timerB.isRunning">
+          <a ng-click="versus.timerB.toZero()" href="#">Set to 0</a>
+        </li>
+      </ul>
+      </div>
+
+    </td>
+  </tr>
+  <tr class="text-center"  ng-if="!versus.isStarted">
+    <td>
+      <a ng-click="versus.timerB.hours = versus.timerB.hours - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerB.minutes = versus.timerB.minutes - 1"
+         class="btn btn-link">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+    <td>
+      <a ng-click="versus.timerB.seconds = versus.timerB.seconds - 1"
+         class="btn btn-link">
+          <span  class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </td>
+    <td></td>
+  </tr>
+  <tr ng-show="versus.timerB.overlapValue">
+    <td class="overlap-time" colspan="7">
+      -{{versus.timerB.over_hours()}}:{{versus.timerB.over_minutes()}}:{{versus.timerB.over_seconds()}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<footer>
+  <button ng-click="versus.pause()" ng-if="versus.isStarted && !versus.isPaused"
+          type="button" class="btn btn-primary btn-lg center-block">
+    Pause
+  </button>
+  <button ng-click="versus.resume()" ng-if="versus.isStarted && versus.isPaused"
+          type="button" class="btn btn-primary btn-lg center-block">
+    Resume
+  </button>
+</footer>

@@ -1,0 +1,8 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+
+[*.{html,js,rb,scss,xml,less,css}]
+indent_size = 2

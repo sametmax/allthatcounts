@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# 2014-04-20 18:01:00
+
+CACHE:
+index.html
+css/style.css
+css/bootstrap.min.css
+templates/chronos.html
+templates/countdown.html
+templates/counters.html
+templates/versus.html
+sound/gong.ogg
+sound/gong.mp3
+js/angular.js
+js/angular.min.js
+js/main.js
+js/misc.service.js
+js/timer.service.js
+js/versus.service.js
+js/ui-bootstrap-tpls-0.10.0.js
+js/html5shiv.js
+js/respond.min.js
+fonts/glyphicons-halflings-regular.woff
+fonts/glyphicons-halflings-regular.ttf
+
