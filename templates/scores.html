@@ -1,0 +1,23 @@
+<div class="container-fluid row playcols" ng-init="tabcount = 100">
+  <div class="player {{'col-xs-'+3*((4/players.list.length) - (4/players.list.length) % 1 || 1)}} {{'col-md-'+((12/players.list.length) - (12/players.list.length) % 1 || 1)}}" ng-repeat="player in players.list">
+    <input class="counter-name" type="text" select-on-click
+           ng-model="player.name" }} />
+    <input class="form-control text-center" type="number" ng-repeat="turn in player.scores track by $index" ng-model="player.scores[$index]" ng-init="playerno = $index" tabindex="{{ tabcount + playerno * ($index + 1)}}" />
+
+    <span class="score">{{ player.total }}</span>
+
+    <button type="button"
+              ng-really-message="Really DELETE this player?"
+              ng-really-click="players.remove($index)"
+              class="btn btn-danger btn-small center-block">×</button>
+  </div>
+</div>
+
+<footer>
+  <button ng-click="players.newTurn()" type="button" class="btn btn-default btn-lg center-block">
+    New turn
+  </button>
+  <button ng-click="players.add()" type="button" class="btn btn-primary btn-lg center-block">
+    Add player
+  </button>
+</footer>

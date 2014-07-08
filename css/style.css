@@ -64,6 +64,17 @@ caption input {
   padding-right:1ex;
 }
 
+.player .counter-name {
+  width: 100%;
+}
+
+.player .score {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  display: block;
+}
+
 footer {
     margin-top:1em;
 }

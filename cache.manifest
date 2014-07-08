@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2014-4-24 11:13:00
+# 2014-07-05 17:48:00
 
 CACHE:
 index.html
@@ -9,6 +9,7 @@ templates/chronos.html
 templates/countdown.html
 templates/counters.html
 templates/versus.html
+templates/scores.html
 sound/gong.ogg
 sound/gong.mp3
 js/angular.js
@@ -17,6 +18,7 @@ js/main.js
 js/misc.service.js
 js/timer.service.js
 js/versus.service.js
+js/scores.service.js
 js/ui-bootstrap-tpls-0.10.0.js
 js/html5shiv.js
 js/respond.min.js
