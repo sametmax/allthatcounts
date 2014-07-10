@@ -103,6 +103,8 @@ counterApp.directive('ngReallyClick', [function() {
   };
 }]);
 
+
+
 /**
 * Project entry point.
 */
@@ -124,6 +126,10 @@ counterApp.controller('TabsCtrl', function($scope, countersService, timersServic
 
   $scope.tab = "countdown";
   $scope.selectTab = function(name){$scope.tab = name;};
+
+  $scope.floor = Math.floor;
+  $scope.max = Math.max;
+  $scope.min = Math.min;
 
   /*
     I don't know where to put this.

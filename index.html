@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html ng-app="counterApp" manifest="cache.manifest">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="keywords" content="Countdown, chrono, timers, counters, games, sports" />
-    <meta name="description" content="Countdown, chrono, timers and counters for games or sports" />
-    <meta name="robots" content="index,follow" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="keywords" content="Countdown, chrono, timers, counters, games, sports" />
+  <meta name="description" content="Countdown, chrono, timers and counters for games or sports" />
+  <meta name="robots" content="index,follow" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>
-        All that counts - Countdown, chrono, timers and counters for games or sports
-    </title>
+  <title>
+      All that counts - Countdown, chrono, timers and counters for games or sports
+  </title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
 
-    <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 <div class="container">
-
 <div ng-controller="TabsCtrl">
   <tabset>
-
     <tab heading="Countdown" select="selectTab('countdown')">
       <div ng-include="'templates/countdown.html'"></div>
     </tab>
