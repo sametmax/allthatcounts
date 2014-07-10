@@ -64,6 +64,67 @@ caption input {
   padding-right:1ex;
 }
 
+.row-lg {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.row-lg [class*="col-lg"],
+.row-lg [class*="col-md"],
+.row-lg [class*="col-sm"] {
+  float: none;
+  display: inline-block;
+}
+
+.player {
+  padding: 0;
+  margin: 0;
+}
+
+.player.won {
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+.player.lost {
+  background-color: #F2DEDE;
+  border: 1px solid #EBCCD1;
+}
+
+.player .counter-name {
+  width: 100%;
+}
+
+.player .score {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  display: block;
+}
+
+.player.won .score {
+  color: #3C763D;
+}
+
+.player.lost .score {
+  color: #A94442;
+}
+
+.player.won input.form-control {
+  color: #3C763D;
+  border-color: #3C763D;
+}
+
+.player.lost input.form-control {
+  color: #A94442;
+  border-color: #A94442;
+}
+
+input.form-control.init-score {
+  background-color: #ededed;
+}
+
 footer {
     margin-top:1em;
 }
@@ -80,7 +141,7 @@ input[type='number'] {
   -moz-appearance:textfield;
 }
 
-input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }

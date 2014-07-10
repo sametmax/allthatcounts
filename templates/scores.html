@@ -1,0 +1,66 @@
+<form class="form-inline">
+  <div class="form-group">
+    <span class="btn-group">
+      <button type="button" class="btn btn-info active"
+              ng-model="players.match"
+              btn-radio="'off'">Off</button>
+      <button type="button" class="btn btn-info"
+              ng-model="players.match"
+              btn-radio="'win'">Wins</button>
+      <button type="button" class="btn btn-info"
+              ng-model="players.match"
+              btn-radio="'lose'">Loses</button>
+    </span>
+  </div>
+  <div class="form-group">
+    <div class="input-group" ng-if="players.match == 'win' || players.match == 'lose'">
+      <span class="input-group-addon">at</span>
+      <input type="text" class="form-control" ng-model="players.goal">
+    </div>
+  </div>
+  <div class="form-group pull-right">
+    <span class="btn-group">
+      <button type="button" class="btn btn-info active"
+              ng-model="players.mode"
+              btn-radio="'add'">+</button>
+      <button type="button" class="btn btn-info"
+              ng-model="players.mode"
+              btn-radio="'substract'">–</button>
+    </span>
+  </div>
+</form>
+
+<div class="row row-lg playcols" ng-init="tabcount = 100">
+  <div class="player col-xs-{{ 4*floor(3/min(3, players.list.length)) }}
+              col-md-{{ floor(12/min(12, players.list.length)) }}"
+       ng-class="{'won': player.won, 'lost': player.lost}"
+       ng-repeat="player in players.list">
+    <input class="counter-name" type="text" select-on-click
+           ng-model="player.name" }} />
+    <input class="form-control text-center" type="number" pattern="-?[0-9]*" 
+           ng-repeat="turn in player.scores track by $index"
+           ng-model="player.scores[$index]"
+           ng-init="playerno = $index"
+           ng-class="{'init-score': players.mode == 'substract' &amp;&amp; $index == 0}"
+           tabindex="{{ tabcount + playerno * ($index + 1)}}" />
+
+    <span class="score">{{ player.total }}</span>
+    <p class="text-center mute">{{ players.rank($index) }}</p>
+
+    <button type="button"
+            ng-really-message="Really DELETE this player?"
+            ng-really-click="players.remove($index)"
+            class="btn btn-danger btn-small center-block">×</button>
+  </div>
+</div>
+
+<footer>
+  <button ng-click="players.newTurn()" type="button"
+          class="btn btn-default btn-lg btn-block">
+    New turn
+  </button>
+  <button ng-click="players.add()" type="button"
+          class="btn btn-primary btn-lg btn-block">
+    Add player
+  </button>
+</footer>
